@@ -8,8 +8,12 @@ sayHello('World');
 /**
  * require style imports
  */
+
+// establish our imports
 const {getMovies, addMovie, editMovie, getEditMovie} = require('./api.js');
 const $ = require("jquery");
+
+// get movies function that populates the .json
 
 getMovies().then((movies) => {
     $("#movies").html('Here are all the movies:');
@@ -25,24 +29,23 @@ getMovies().then((movies) => {
     console.log(error);
 });
 
-// getEditMovie().then((movie) => {
-//     console.log(movie);
-// })
-
-
+// click event listener to add a new movie
 $("#addMovie").click(addMovie);
+// click event listener to refresh the movies list...doesnt work
 $("#refresh").click(getMovies);
+// click event listener that picks the movie to edit based on the value of the id field
 $('#this-must-work').click(function () {
-    console.log('hello im working')
-    getEditMovie()
-        .then((data) => {$('#titleEdit').val(data.title);$('#ratingEdit').val(data.rating)});
+    console.log('hello im working') //working/loading message.
+    getEditMovie()          //movie to edit picker
+        .then((data) => {$('#titleEdit').val(data.title);$('#ratingEdit').val(data.rating)});  // result from the promise resolution
 });
 
+
+// click event listener that edits movie in database
 $('#editMovie').click(function (){
-    editMovie($('#titleEdit').val(),$('#ratingEdit').val());
+    let x = $('#idEdit').val();         //var for id value
+    let y = {title: $('#titleEdit').val(), rating: $('#ratingEdit').val()}; //var for info being edited
+
+    editMovie(x,y);         //execute the edit movie function
 })
-// console.log(getEditMovie());
-// .then((movie) => {
-//     console.log(movie.title);
-//     $('#ratingEdit').val(movie.rating)
-// }));
+

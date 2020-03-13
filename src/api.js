@@ -27,23 +27,10 @@ module.exports = {
     },
     editMovie: (id, movie) => {
         return fetch(`api/movies/${id}`, {
-            method: 'Patch',
+            method: 'Put',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify(movie)
         })
             .then(response => response.json());
-    },
-    // editMovie: () => {
-    //     let index = $('#idEdit').val();
-    //     console.log(index);
-    //     let movieObj = fetch('/api/movies/')
-    //         .then(response => response.json())
-    //         .then()
-    //     console.log(movieObj);
-    //
-    //
-    // }
-
-    // nothing important
-
+    }
 };
