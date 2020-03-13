@@ -8,9 +8,24 @@
 <body>
 
     <div class="container">
+        <button type="submit" id="refresh">Refresh</button>
         <h1>Hello There!</h1>
         <p>To get started, edit <code>src/index.js</code>.</p>
+        <div id="movies">loading...</div>
+        <div id="moviesOutput"></div>
+        <form action="" method="post">
+            <div id="newMovie">
+                <label for="title">Title:</label>
+                <input type="text" name="movie" id="title">
+                <label for="rating">Rating:</label>
+                <input type="text" name="movie" id="rating">
+                <button id="addMovie" type="submit">Add movie</button>
+
+            </div>
+        </form>
     </div>
+
+
 
     <script src="./main.js"></script>
 </body>
