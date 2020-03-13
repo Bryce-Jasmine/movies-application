@@ -1,32 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>My Application</title>
-    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
 
-    <div class="container">
-        <button type="submit" id="refresh">Refresh</button>
-        <h1>Hello There!</h1>
-        <p>To get started, edit <code>src/index.js</code>.</p>
-        <div id="movies">loading...</div>
-        <div id="moviesOutput"></div>
-        <form action="" method="post">
-            <div id="newMovie">
-                <label for="title">Title:</label>
-                <input type="text" name="movie" id="title">
-                <label for="rating">Rating:</label>
-                <input type="text" name="movie" id="rating">
-                <button id="addMovie" type="submit">Add movie</button>
+<div class="container">
+    <button type="submit" id="refresh">Refresh</button>
+    <h1>Hello There!</h1>
+    <p>To get started, edit <code>src/index.js</code>.</p>
+    <div id="movies">loading...</div>
+    <div id="moviesOutput"></div>
+    <form action="" method="post">
+        <div id="newMovie">
+            <label for="title">Title:</label>
+            <input type="text" name="movie" id="title">
+            <label for="rating">Rating:</label>
+            <input type="text" name="movie" id="rating">
+            <button id="addMovie" type="submit">Add movie</button>
 
-            </div>
-        </form>
+        </div>
+    </form>
+    <br>
+
+
+    <label for="idEdit">Id of movie to edit:</label>
+    <input type="text" name="movie being edited" id="idEdit">
+    <button id="this-must-work" type="submit">Do It</button>
+    <div id="changeMovie">
+        <label for="title">Title:</label>
+        <input type="text" name="movie" id="titleEdit">
+        <label for="rating">Rating:</label>
+        <input type="text" name="movie" id="ratingEdit">
+        <button id="editMovie" type="submit">Edit movie</button>
+
     </div>
 
 
+</div>
 
-    <script src="./main.js"></script>
+
+<script src="./main.js"></script>
 </body>
 </html>
