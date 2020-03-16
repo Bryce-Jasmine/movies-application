@@ -6,18 +6,21 @@ module.exports = {
             .then(response => response.json());
     },
     addMovie: (e) => {
-        e.preventDefault();
-        const newMovie = {title: $("#title").val(), rating: $("#rating").val()};
-        console.log(newMovie);
-        const url = "/api/movies";
-        const options = {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(newMovie)
-        };
-        return fetch(url, options)
-            .then()
-            .catch()
+
+        if ($('#title').val() !== '' && $('#rating').val() !== '') {
+            e.preventDefault();
+            const newMovie = {title: $("#title").val(), rating: $("#rating").val()};
+            console.log(newMovie);
+            const url = "/api/movies";
+            const options = {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify(newMovie)
+            };
+            return fetch(url, options)
+                .then()
+                .catch()
+        }
     },
     getEditMovie: (evt) => {
         let id = $(evt.target).parent().parent()[0].id;
@@ -25,19 +28,18 @@ module.exports = {
             .then(response => response.json());
     },
     editMovie: (id, movie) => {
-        let conf = confirm('Editing movies will permanently change them \nAre you sure?');
+        // let conf = confirm('Editing movies will permanently change them \nAre you sure?');
 
-        if (conf === true) {
-            return fetch(`api/movies/${id}`, {
-                method: 'PUT',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify(movie)
-            })
-                .then(response => {
-                    console.log(response);
-                    return response.json()
-                });
-        }
+        return fetch(`api/movies/${id}`, {
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(movie)
+        })
+            .then(response => {
+                console.log(response);
+                return response.json()
+            });
+
     },
 
     getDeleteMovie: (evt) => {

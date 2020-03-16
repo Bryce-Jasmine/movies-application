@@ -1,6 +1,44 @@
+* {
+    --bg: #fffed8;
+    --tx: #18161b;
+    --acct: #9e2721;
+    --acct2: #7a6c5a;
+    --acct3: #1e3049;
+}
+
+.header {
+    font-family: 'Tangerine', cursive, bolder;
+    font-size: 3em;
+    padding-top: 20px;
+}
+
 html, body {
     height: 100%;
 }
+
+body, .getEditMovie, .deleteMovie  {
+    background-color: var(--bg);
+    color: var(--tx);
+}
+.deleteMovie {
+    color: var(--acct);
+    border: 2px solid var(--bg);
+}
+.getEditMovie {
+    color: var(--acct2);
+    border: 2px solid var(--bg);
+}
+#editMovie, #addMovie {
+    background: var(--acct3);
+    color: aliceblue;
+}
+
+.deleteMovie:hover, .getEditMovie:hover {
+    /*font-size: 1.5rem;*/
+    border: 2px solid var(--acct3);
+    border-radius: 50%;
+}
+
 
 /*.container {*/
 /*    position: relative;*/
