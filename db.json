@@ -11,24 +11,9 @@
       "id": 2
     },
     {
-      "title": "movie test",
-      "rating": "3",
-      "id": 3
-    },
-    {
-      "title": "another",
-      "rating": "2",
+      "title": "Finding Nemo",
+      "rating": "0",
       "id": 4
-    },
-    {
-      "title": "another 2 the sequel",
-      "rating": "1",
-      "id": 5
-    },
-    {
-      "title": "new movie",
-      "rating": "4",
-      "id": 6
     }
   ]
 }

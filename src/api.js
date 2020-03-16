@@ -4,8 +4,6 @@ module.exports = {
     getMovies: () => {
         return fetch('/api/movies')
             .then(response => response.json());
-
-
     },
     addMovie: (e) => {
         e.preventDefault();
@@ -21,29 +19,44 @@ module.exports = {
             .then()
             .catch()
     },
-    getEditMovie: () => {
-        let index = $('#idEdit').val();
-        return fetch(`/api/movies/${index}`)
+    getEditMovie: (evt) => {
+        let id = $(evt.target).parent().parent()[0].id;
+        return fetch(`/api/movies/${id}`)
             .then(response => response.json());
     },
     editMovie: (id, movie) => {
-        return fetch(`api/movies/${id}`, {
-            method: 'Put',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify(movie)
-        })
-            .then(response => response.json());
+        let conf = confirm('Editing movies will permanently change them \nAre you sure?');
+
+        if (conf === true) {
+            return fetch(`api/movies/${id}`, {
+                method: 'PUT',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(movie)
+            })
+                .then(response => {
+                    console.log(response);
+                    return response.json()
+                });
+        }
     },
 
-    getDeleteMovie: (id) =>  {
-        console.log("test");
-        return fetch(`api/movies/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
-            }
-        })
-            .then(response => response.json());
+    getDeleteMovie: (evt) => {
+        let target = $(evt.target);
+        let id = target.parent().parent()[0].id;
+        let conf = confirm('Are you sure you want to delete this movie');
+
+        if (conf === true) {
+            return fetch(`api/movies/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            })
+                .then(response => {
+                    alert('Movie permanently deleted.');
+                    return response.json();
+                });
+        }
     }
 };
 

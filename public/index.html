@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <title>My Application</title>
+
     <link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
@@ -11,8 +12,14 @@
     <button type="submit" id="refresh">Refresh</button>
     <h1>Hello There!</h1>
     <p>To get started, edit <code>src/index.js</code>.</p>
+    <hr>
+</div>
+<div>
     <div id="movies">loading...</div>
     <div id="moviesOutput"></div>
+    <hr>
+</div>
+<div>
     <form action="" method="post">
         <div id="newMovie">
             <label for="title">Title:</label>
@@ -25,11 +32,13 @@
     </form>
     <br>
 
-
-    <label for="idEdit">Id of movie to edit:</label>
-    <input type="text" name="movie being edited" id="idEdit">
+</div>
+<hr>
+<div>
+    <!--    <label for="idEdit">Id of movie to edit:</label>-->
     <button id="this-must-work" type="submit">Do It</button>
     <div id="changeMovie">
+        <input type="hidden" id="idEdit">
         <label for="title">Title:</label>
         <input type="text" name="movie" id="titleEdit">
         <label for="rating">Rating:</label>
@@ -43,5 +52,6 @@
 
 
 <script src="./main.js"></script>
+<script src="https://kit.fontawesome.com/8d96d8c50b.js" crossorigin="anonymous"></script>
 </body>
 </html>
