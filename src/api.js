@@ -5,6 +5,7 @@ module.exports = {
         return fetch('/api/movies')
             .then(response => response.json());
 
+
     },
     addMovie: (e) => {
         e.preventDefault();
@@ -32,5 +33,18 @@ module.exports = {
             body: JSON.stringify(movie)
         })
             .then(response => response.json());
+    },
+
+    getDeleteMovie: (id) =>  {
+        console.log("test");
+        return fetch(`api/movies/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        })
+            .then(response => response.json());
     }
 };
+
+
