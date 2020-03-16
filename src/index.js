@@ -14,11 +14,10 @@ const {getMovies, addMovie, editMovie, getEditMovie, getDeleteMovie} = require('
 const $ = require("jquery");
 const fas = require("@fortawesome/fontawesome-free");
 
-
-muthaFunction();
+$(document).ready(loadMovies());
 
 // get movies function that populates the .json
-function muthaFunction() {
+function loadMovies() {
     getMovies().then((movies) => {
         $("#movies").html('Here are all the movies:');
         let list = "";  //<div class='movies container'>
@@ -38,18 +37,13 @@ function muthaFunction() {
         // list += "</div>";
         $("#moviesOutput").html(list);
         // click event listener that deletes movie from database
-        $(".deleteMovie").click((evt) => {
-            getDeleteMovie(evt).then(response => {
-                getMovies();
-                return response;
-            });
-        });
+        $(".deleteMovie").click((evt) => getDeleteMovie(evt).then(() => getMovies()));
         // click event listener that edits movie in database
         $('#editMovie').click(function (evt) {
             let id = $(evt.target).siblings('#idEdit')[0].value;                                    //var for id value
             let movie = {title: $('#titleEdit').val(), rating: $('#ratingEdit').val()};     //var for info being edited
 
-            editMovie(id, movie).then(muthaFunction)         //execute the edit movie function
+            editMovie(id, movie).then(loadMovies)         //execute the edit movie function
         });
         // click event listener that picks the movie to edit based on the value of the id field
         $('.getEditMovie').click(function (evt) {
