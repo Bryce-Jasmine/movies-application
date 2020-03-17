@@ -30,7 +30,6 @@ function loadMovies() {
         movies.forEach(({title, genre, rating, id}) => {
             list += (`<div class = "movies" id="${id}"> 
                  <h5>${title}</h5>
-                 
                  <div class="d-flex justify-content-between align-items-baseline">
                  <p style="width: 130px">Genre: ${genre}</p> <p>Rating: ${rating}</p>
                     <div class="d-flex justify-content-end"> 
@@ -42,6 +41,7 @@ function loadMovies() {
                     </button>
                     </div>
                     </div>
+                    <hr>
              </div>`);
             $("#moviesOutput").html(`id#${id} - ${title} - rating: ${rating}`);
         });
@@ -51,7 +51,7 @@ function loadMovies() {
         $(".deleteMovie").click((evt) => getDeleteMovie(evt).then(() => refreshMovies()));
         // click event listener that edits movie in database
         $('#editMovie').click(function (evt) {
-            console.log("test");
+            // console.log("test");
             let id = $(evt.target).siblings('#idEdit')[0].value;                                    //var for id value
             let movie = {
                 title: $('#titleEdit').val(),
@@ -59,9 +59,13 @@ function loadMovies() {
                 rating: $('#ratingEdit').val()
             };     //var for info being edited
 
-
-
             editMovie(id, movie).then(loadMovies)         //execute the edit movie function
+                .then(() => {
+                    $('#titleEdit').val('');
+                    $('#genreEdit').val('');
+                    $('#ratingEdit').val('');
+                    document.getElementById('editMovie').disabled = true;
+                })
         });
         // click event listener that picks the movie to edit based on the value of the id field
         $('.getEditMovie').click(function (evt) {
@@ -72,7 +76,8 @@ function loadMovies() {
                     $("#genreEdit").val(data.genre);
                     $('#ratingEdit').val(data.rating);
                     $('#idEdit').val(data.id);
-                });  // result from the promise resolution
+                })  // result from the promise resolution
+                .then(enableEditBtn);
         });
 
     }).catch((error) => {
@@ -86,6 +91,24 @@ $("#addMovie").click((evt) => addMovie(evt).then(() => refreshMovies()));
 
 // click event listener to refresh the movies list
 $("#refresh").click(refreshMovies);
+
+function enableAddBtn() {
+    if ($('#title').val() !== '' && $('#rating').val() !== '') {
+        document.getElementById('addMovie').disabled = false;
+    } else {
+        document.getElementById('addMovie').disabled = true;
+    }
+}
+
+function enableEditBtn() {
+    if ($('#titleEdit').val() !== '' && $('#ratingEdit').val() !== '') {
+        document.getElementById('editMovie').disabled = false;
+    } else {
+        document.getElementById('editMovie').disabled = true;
+    }
+}
+
+$('#newMovie input').blur(enableAddBtn);
 
 
 // click event listener that grabs movie to delete

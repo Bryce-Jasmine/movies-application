@@ -27,7 +27,7 @@
     {
       "title": "Finding Dory",
       "genre": "Animation",
-      "rating": "3",
+      "rating": "4",
       "id": 5
     },
     {
@@ -61,10 +61,10 @@
       "id": 13
     },
     {
-    "title": "The Lost City",
-    "genre": "Drama",
-    "rating": "4",
-    "id": 14
+      "title": "The Lost City",
+      "genre": "Drama",
+      "rating": "4",
+      "id": 14
     },
     {
       "title": "Life is Beautiful",
@@ -99,7 +99,7 @@
     {
       "title": "The Matrix",
       "genre": "Sci-Fi",
-      "rating": "4",
+      "rating": "3",
       "id": 20
     },
     {
@@ -149,7 +149,8 @@
       "genre": "Biography",
       "rating": "5",
       "id": 28
-    }, {
+    },
+    {
       "title": "Avatar",
       "genre": "Sci-Fi",
       "rating": "5",
@@ -172,7 +173,30 @@
       "genre": "Drama",
       "rating": "5",
       "id": 32
+    },
+    {
+      "title": "The Princess Bride",
+      "genre": "Romance",
+      "rating": "5",
+      "id": 33
+    },
+    {
+      "title": "Romancing the Stone",
+      "genre": "Romance",
+      "rating": "4",
+      "id": 34
+    },
+    {
+      "title": "Isle of Dogs",
+      "rating": "4",
+      "genre": "Animation",
+      "id": 35
+    },
+    {
+      "title": "The Right Stuff",
+      "rating": "4",
+      "genre": "Drama",
+      "id": 36
     }
-
   ]
 }
