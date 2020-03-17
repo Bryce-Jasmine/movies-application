@@ -4,6 +4,7 @@
     --acct: #9e2721;
     --acct2: #7a6c5a;
     --acct3: #1e3049;
+    --acct4: #6a95c3;
 }
 
 .header {
@@ -34,11 +35,9 @@ body, .getEditMovie, .deleteMovie  {
 }
 
 .deleteMovie:hover, .getEditMovie:hover {
-    /*font-size: 1.5rem;*/
-    border: 2px solid var(--acct3);
     border-radius: 50%;
+    text-shadow: 0 0 20px saddlebrown;
 }
-
 
 /*.container {*/
 /*    position: relative;*/

@@ -17,7 +17,7 @@ const fas = require("@fortawesome/fontawesome-free");
 $(document).ready(loadMovies());
 
 function refreshMovies() {
-    $('#moviesOutput').html(`<div id="movies"><img src="./img/Dual_Ball-1s-141px.svg" alt="loading"></div>`);
+    $('#moviesOutput').html(`<div id="movies" class="text-center"><img src="./img/Dual_Ball-1s-141px.svg" alt="loading"></div>`);
     loadMovies();
 }
 
