@@ -2,53 +2,201 @@
   "movies": [
     {
       "title": "Casablanca",
+      "genre": "Drama",
       "rating": "4",
       "id": 1
     },
     {
       "title": "Star Wars: A New Hope",
+      "genre": "Sci-Fi",
       "rating": "5",
       "id": 2
     },
     {
       "title": "Transformers",
+      "genre": "Action",
       "rating": "1",
       "id": 3
     },
     {
       "title": "Star Wars: The Empire Strikes Back",
+      "genre": "Sci-Fi",
       "rating": "5",
       "id": 4
     },
     {
       "title": "Finding Dory",
-      "rating": "3",
+      "genre": "Animation",
+      "rating": "4",
       "id": 5
     },
     {
       "title": "Finding Nemo",
+      "genre": "Animation",
       "rating": "4",
       "id": 6
     },
     {
       "title": "The Big Lebowski",
+      "genre": "Comedy",
       "rating": "5",
       "id": 8
     },
     {
       "title": "The Shawshank Redemption",
+      "genre": "Drama",
       "rating": "5",
       "id": 11
     },
     {
       "title": "The Neverending Story",
+      "genre": "Adventure",
       "rating": "5",
       "id": 12
     },
     {
       "title": "T2: Judgement Day",
+      "genre": "Action",
       "rating": "5",
       "id": 13
+    },
+    {
+      "title": "The Lost City",
+      "genre": "Drama",
+      "rating": "4",
+      "id": 14
+    },
+    {
+      "title": "Life is Beautiful",
+      "genre": "Comedy",
+      "rating": "5",
+      "id": 15
+    },
+    {
+      "title": "Good Will Hunting",
+      "genre": "Drama",
+      "rating": "4",
+      "id": 16
+    },
+    {
+      "title": "Kung Fu Panda",
+      "genre": "Animation",
+      "rating": "5",
+      "id": 17
+    },
+    {
+      "title": "12 Angry Men",
+      "genre": "Drama",
+      "rating": "5",
+      "id": 18
+    },
+    {
+      "title": "The Dark Knight",
+      "genre": "Action",
+      "rating": "4",
+      "id": 19
+    },
+    {
+      "title": "The Matrix",
+      "genre": "Sci-Fi",
+      "rating": "3",
+      "id": 20
+    },
+    {
+      "title": "Forrest Gump",
+      "genre": "Drama",
+      "rating": "5",
+      "id": 21
+    },
+    {
+      "title": "The Godfather",
+      "genre": "Drama",
+      "rating": "5",
+      "id": 22
+    },
+    {
+      "title": "The Departed",
+      "genre": "Drama",
+      "rating": "5",
+      "id": 23
+    },
+    {
+      "title": "Gladiator",
+      "genre": "Action",
+      "rating": "4",
+      "id": 24
+    },
+    {
+      "title": "T2: Judgement Day",
+      "genre": "Action",
+      "rating": "5",
+      "id": 25
+    },
+    {
+      "title": "Inglourious Basterds",
+      "genre": "Adventure",
+      "rating": "5",
+      "id": 26
+    },
+    {
+      "title": "Million Dollar Baby",
+      "genre": "Drama",
+      "rating": "5",
+      "id": 27
+    },
+    {
+      "title": "The Aviator",
+      "genre": "Biography",
+      "rating": "5",
+      "id": 28
+    },
+    {
+      "title": "Avatar",
+      "genre": "Sci-Fi",
+      "rating": "5",
+      "id": 29
+    },
+    {
+      "title": "Big Fish",
+      "genre": "Adventure",
+      "rating": "5",
+      "id": 30
+    },
+    {
+      "title": "Schindler's List",
+      "genre": "Biography",
+      "rating": "5",
+      "id": 31
+    },
+    {
+      "title": "Titanic",
+      "genre": "Drama",
+      "rating": "5",
+      "id": 32
+    },
+    {
+      "title": "The Princess Bride",
+      "genre": "Romance",
+      "rating": "5",
+      "id": 33
+    },
+    {
+      "title": "Romancing the Stone",
+      "genre": "Romance",
+      "rating": "4",
+      "id": 34
+    },
+    {
+      "title": "Isle of Dogs",
+      "rating": "4",
+      "genre": "Animation",
+      "id": 35
+    },
+    {
+      "title": "The Right Stuff",
+      "rating": "4",
+      "genre": "Drama",
+      "id": 36
     }
   ]
 }

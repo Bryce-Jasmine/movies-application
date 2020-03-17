@@ -1,4 +1,5 @@
 const $ = require("jquery");
+const {enableEditBtn, enableAddBtn} = require('./index.js');
 
 module.exports = {
     getMovies: () => {
@@ -9,7 +10,7 @@ module.exports = {
 
         if ($('#title').val() !== '' && $('#rating').val() !== '') {
             e.preventDefault();
-            const newMovie = {title: $("#title").val(), rating: $("#rating").val()};
+            const newMovie = {title: $("#title").val(), rating: $("#rating").val(), genre: $("#genre").val()};
             console.log(newMovie);
             const url = "/api/movies";
             const options = {
@@ -18,12 +19,19 @@ module.exports = {
                 body: JSON.stringify(newMovie)
             };
             return fetch(url, options)
-                .then()
+                .then(() => {
+                    $('#title').val('');
+                    $('#genre').val('');
+                    $('#rating').val('');
+                    document.getElementById('addMovie').disabled = true;
+                })
                 .catch()
         }
     },
     getEditMovie: (evt) => {
-        let id = $(evt.target).parent().parent()[0].id;
+        console.log(evt);
+        let id = $(evt.currentTarget).parent().parent().parent()[0].id;
+        console.log(id);
         return fetch(`/api/movies/${id}`)
             .then(response => response.json());
     },
@@ -43,8 +51,8 @@ module.exports = {
     },
 
     getDeleteMovie: (evt) => {
-        let target = $(evt.target);
-        let id = target.parent().parent()[0].id;
+        // let target = $(evt.currentTarget);
+        let id = $(evt.currentTarget).parent().parent().parent()[0].id;
         let conf = confirm('Are you sure you want to delete this movie');
 
         if (conf === true) {

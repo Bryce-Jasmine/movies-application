@@ -14,10 +14,11 @@ const {getMovies, addMovie, editMovie, getEditMovie, getDeleteMovie} = require('
 const $ = require("jquery");
 const fas = require("@fortawesome/fontawesome-free");
 
+
 $(document).ready(loadMovies());
 
 function refreshMovies() {
-    $('#moviesOutput').html(`<div id="movies" class="text-center"><img src="./img/Dual_Ball-1s-141px.svg" alt="loading"></div>`);
+    $('#moviesOutput').html(`<div id="movies" class="d-flex justify-content-center"><img src="./img/Dual_Ball-1s-141px.svg" alt="loading"></div>`);
     loadMovies();
 }
 
@@ -26,16 +27,21 @@ function loadMovies() {
     getMovies().then((movies) => {
         $("#movies").html(/*'Here are all the movies:'*/'');
         let list = "";  //<div class='movies container'>
-        movies.forEach(({title, rating, id}) => {
-            list += (`<div id="${id}"> 
-                 <strong>${title}</strong>
-                , Rating: ${rating} 
-                    <button type="submit" class="getEditMovie">
+        movies.forEach(({title, genre, rating, id}) => {
+            list += (`<div class = "movies" id="${id}"> 
+                 <h5>${title}</h5>
+                 <div class="d-flex justify-content-between align-items-baseline">
+                 <p style="width: 130px">Genre: ${genre}</p> <p>Rating: ${rating}</p>
+                    <div class="d-flex justify-content-end"> 
+                    <button type="submit" class=" btn getEditMovie justify-content-end">
                         <i class="fas fa-pencil-alt"></i>
                     </button>
-                    <button type="submit" class="deleteMovie">
+                    <button type="submit" class="btn deleteMovie justify-content-end">
                         <i class="fas fa-minus-circle"></i>
                     </button>
+                    </div>
+                    </div>
+                    <hr>
              </div>`);
             $("#moviesOutput").html(`id#${id} - ${title} - rating: ${rating}`);
         });
@@ -45,10 +51,21 @@ function loadMovies() {
         $(".deleteMovie").click((evt) => getDeleteMovie(evt).then(() => refreshMovies()));
         // click event listener that edits movie in database
         $('#editMovie').click(function (evt) {
+            // console.log("test");
             let id = $(evt.target).siblings('#idEdit')[0].value;                                    //var for id value
-            let movie = {title: $('#titleEdit').val(), rating: $('#ratingEdit').val()};     //var for info being edited
+            let movie = {
+                title: $('#titleEdit').val(),
+                genre: $('#genreEdit').val(),
+                rating: $('#ratingEdit').val()
+            };     //var for info being edited
 
             editMovie(id, movie).then(loadMovies)         //execute the edit movie function
+                .then(() => {
+                    $('#titleEdit').val('');
+                    $('#genreEdit').val('');
+                    $('#ratingEdit').val('');
+                    document.getElementById('editMovie').disabled = true;
+                })
         });
         // click event listener that picks the movie to edit based on the value of the id field
         $('.getEditMovie').click(function (evt) {
@@ -56,9 +73,11 @@ function loadMovies() {
             getEditMovie(evt)          //movie to edit picker
                 .then((data) => {
                     $('#titleEdit').val(data.title);
+                    $("#genreEdit").val(data.genre);
                     $('#ratingEdit').val(data.rating);
                     $('#idEdit').val(data.id);
-                });  // result from the promise resolution
+                })  // result from the promise resolution
+                .then(enableEditBtn);
         });
 
     }).catch((error) => {
@@ -73,7 +92,24 @@ $("#addMovie").click((evt) => addMovie(evt).then(() => refreshMovies()));
 // click event listener to refresh the movies list
 $("#refresh").click(refreshMovies);
 
+function enableAddBtn() {
+    if ($('#title').val() !== '' && $('#rating').val() !== '') {
+        document.getElementById('addMovie').disabled = false;
+    } else {
+        document.getElementById('addMovie').disabled = true;
+    }
+}
+
+function enableEditBtn() {
+    if ($('#titleEdit').val() !== '' && $('#ratingEdit').val() !== '') {
+        document.getElementById('editMovie').disabled = false;
+    } else {
+        document.getElementById('editMovie').disabled = true;
+    }
+}
+
+$('#newMovie input').blur(enableAddBtn);
+
 
 // click event listener that grabs movie to delete
 // $(".deleteMovie").click(getDeleteMovie);
-
