@@ -9,7 +9,7 @@
 
 .header {
     font-family: 'Tangerine', cursive, bolder;
-    font-size: 3em;
+    font-size: 4em;
     padding-top: 20px;
 }
 
@@ -34,9 +34,20 @@ body, .getEditMovie, .deleteMovie  {
     color: aliceblue;
 }
 
+.movies {
+    padding-top: 10px;
+
+
+}
+
+
 .deleteMovie:hover, .getEditMovie:hover {
     border-radius: 50%;
     text-shadow: 0 0 20px saddlebrown;
+}
+.btn:focus, .btn:active {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 /*.container {*/

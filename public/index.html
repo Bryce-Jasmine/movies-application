@@ -18,8 +18,8 @@
 </div>
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-sm-12 border pb-3">
-<!--            <div id="movies"><img src="./img/Dual_Ball-1s-141px.svg" alt="loading"></div>-->
+        <div id="movieContainer" class="col-md-8 col-sm-12 border pb-3">
+            <div id="movies" class="d-flex justify-content-center"><img src="./img/Dual_Ball-1s-141px.svg" alt="loading"></div>
             <div id="moviesOutput"></div>
 
         </div>
@@ -34,7 +34,12 @@
                             <br>
                             <input type="text" name="movie" id="title" placeholder="Movie">
                             <hr>
+                            <label for="genre">Genre:</label>
+                            <br>
+                            <input type="text" name="movie" id="genre" placeholder="Genre">
+                            <hr>
                             <label for="rating">Rating:</label>
+                            <br>
                             <input type="text" name="movie" id="rating" placeholder="1-5">
                             <hr>
                             <button id="addMovie" type="submit">Add movie</button>
@@ -53,7 +58,12 @@
                     <br>
                     <input type="text" name="movie" id="titleEdit" placeholder="Movie">
                     <hr>
+                    <label for="rating">Genre:</label>
+                    <br>
+                    <input type="text" name="movie" id="genreEdit" placeholder="Genre">
+                    <hr>
                     <label for="rating">Rating:</label>
+                    <br>
                     <input type="text" name="movie" id="ratingEdit" placeholder="1-5">
                     <hr>
                     <button id="editMovie" type="submit">Edit movie</button>
