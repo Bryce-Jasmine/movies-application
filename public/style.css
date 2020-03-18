@@ -33,14 +33,9 @@ body, .getEditMovie, .deleteMovie  {
     background: var(--acct3);
     color: aliceblue;
 }
-
 .movies {
     padding-top: 10px;
-
-
 }
-
-
 .deleteMovie:hover, .getEditMovie:hover {
     border-radius: 50%;
     text-shadow: 0 0 20px saddlebrown;
@@ -53,15 +48,20 @@ body, .getEditMovie, .deleteMovie  {
     background: var(--acct4);
     color: lightgrey;
 }
-/*.container {*/
-/*    position: relative;*/
-/*    top: 50%;*/
-/*    transform: translateY(-100%);*/
-/*    text-align: center;*/
-/*}*/
-/*.container {*/
-/*    position: relative;*/
-/*    top: 50%;*/
-/*    transform: translateY(-100%);*/
-/*    text-align: center;*/
+#movieContainer {
+    overflow: auto;
+    height: 78vh;
+}
+
+.sortBar {
+    height: 50px;
+    background: var(--acct3);
+    box-shadow: 0 0 20px var(--acct4);
+}
+
+.sortBar label {
+    color: var(--bg);
+}
+/*#space {*/
+/*    padding-left: 25px;*/
 /*}*/
