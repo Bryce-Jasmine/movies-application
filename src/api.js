@@ -2,10 +2,14 @@ const $ = require("jquery");
 const {enableEditBtn, enableAddBtn} = require('./index.js');
 
 module.exports = {
+
+    //pull db.json
     getMovies: () => {
         return fetch('/api/movies')
             .then(response => response.json());
     },
+
+    //pru new movie to db.json
     addMovie: (e) => {
 
         if ($('#title').val() !== '' && $('#rating').val() !== '') {
@@ -28,6 +32,8 @@ module.exports = {
                 .catch()
         }
     },
+
+    //gets the id for editing a movie in db.json
     getEditMovie: (evt) => {
         console.log(evt);
         let id = $(evt.currentTarget).parent().parent().parent()[0].id;
@@ -35,6 +41,8 @@ module.exports = {
         return fetch(`/api/movies/${id}`)
             .then(response => response.json());
     },
+
+    //edits the movie associated with the edit movie grabber
     editMovie: (id, movie) => {
         // let conf = confirm('Editing movies will permanently change them \nAre you sure?');
 
@@ -50,6 +58,7 @@ module.exports = {
 
     },
 
+    //gets the id for deleting a movie
     getDeleteMovie: (evt) => {
         // let target = $(evt.currentTarget);
         let id = $(evt.currentTarget).parent().parent().parent()[0].id;

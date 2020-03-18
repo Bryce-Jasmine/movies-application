@@ -1,30 +1,20 @@
-/**
- * es6 modules and imports
- */
-import sayHello from './hello';
-
-sayHello('World');
-
-/**
- * require style imports
- */
-
-// establish our imports
+// establish imports
 const {getMovies, addMovie, editMovie, getEditMovie, getDeleteMovie} = require('./api.js');
 const $ = require("jquery");
 const fas = require("@fortawesome/fontawesome-free");
 
-
+//fills the movies container on page ready
 $(document).ready(loadMovies());
 
+//function for refreshing the movie list
 function refreshMovies() {
     $('#moviesOutput').html(`<div id="movies" class="d-flex justify-content-center"><img src="./img/Dual_Ball-1s-141px.svg" alt="loading"></div>`);
     loadMovies();
 }
 
+// populates the movie container with info from db.json
 function populate(arr) {
-    $("#movies").html(/*'Here are all the movies:'*/'');
-    let list = "";  //<div class='movies container'>
+    let list = "";
     arr.forEach(({title, genre, rating, id}) => {
         list += (`<div class = "movies" id="${id}"> 
                  <h5>${title}</h5>
@@ -44,17 +34,18 @@ function populate(arr) {
         $("#moviesOutput").html(`id#${id} - ${title} - rating: ${rating}`);
     });
     $("#moviesOutput").html(list);
+
     // click event listener that deletes movie from database
     $(".deleteMovie").click((evt) => getDeleteMovie(evt).then(() => refreshMovies()));
+
     // click event listener that edits movie in database
     $('#editMovie').click(function (evt) {
-        // console.log("test");
         let id = $(evt.target).siblings('#idEdit')[0].value;                                    //var for id value
-        let movie = {
+        let movie = {                                //var for info being edited
             title: $('#titleEdit').val(),
             genre: $('#genreEdit').val(),
             rating: $('#ratingEdit').val()
-        };     //var for info being edited
+        };
 
         editMovie(id, movie).then(loadMovies)         //execute the edit movie function
             .then(() => {
@@ -64,6 +55,7 @@ function populate(arr) {
                 document.getElementById('editMovie').disabled = true;
             })
     });
+
     // click event listener that picks the movie to edit based on the value of the id field
     $('.getEditMovie').click(function (evt) {
         getEditMovie(evt)          //movie to edit picker
@@ -72,13 +64,12 @@ function populate(arr) {
                 $("#genreEdit").val(data.genre);
                 $('#ratingEdit').val(data.rating);
                 $('#idEdit').val(data.id);
-            })  // result from the promise resolution
+            })
             .then(enableEditBtn);
     });
 }
 
-// get movies function that populates the .json
-let sortArr = [];
+let sortArr = [];        //var assigning promise response to an array
 
 function loadMovies() {
     getMovies()
@@ -98,6 +89,7 @@ $("#addMovie").click((evt) => addMovie(evt).then(() => refreshMovies()));
 // click event listener to refresh the movies list
 $("#refresh").click(refreshMovies);
 
+// function to switch the enable/disable for the add buttons
 function enableAddBtn() {
     if ($('#title').val() !== '' && $('#rating').val() !== '') {
         document.getElementById('addMovie').disabled = false;
@@ -106,10 +98,12 @@ function enableAddBtn() {
     }
 }
 
+// function to switch the enable/disable for the edit buttons
 function enableEditBtn() {
     document.getElementById('editMovie').disabled = !($('#titleEdit').val() !== '' && $('#ratingEdit').val() !== '');
 }
 
+// event listener for disabling/enabling button
 $('#newMovie input').blur(enableAddBtn);
 
 // sort functionality
@@ -132,12 +126,15 @@ $("#sort").click(function () {
     }
 });
 
+
+// search functionality
 $('#search').click(function (){
     let comp = $('#searchBar').val();
     let myName = sortArr.filter(movie => movie.title.includes(comp));
     populate(myName);
 });
-// sort comparator function
+
+// sort comparator functions
 function compareTitle(a, b) {
     if (a.title < b.title) {
         return -1;
@@ -167,16 +164,3 @@ function compareRating(a, b) {
     }
     return 0;
 }
-
-// function search(a) {
-//     if ()
-// }
-//
-// // create an array
-// const names = ['John', 'Peter', 'James', 'Pammy'];
-//
-// // Filter the array for names having 'am'
-// const myName = names.filter(name => name.includes('am'));
-//
-// // Output new array
-// console.log(myName)
